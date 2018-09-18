@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center_vertical|center_horizontal"
+    tools:context=".CadastroUsuarioActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="113dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/usuario" />
+
+    <EditText
+        android:id="@+id/edit_cadastro_nome"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="153dp"
+        android:ems="10"
+        android:hint="Digite seu nome:"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edit_cadastro_email"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_cadastro_nome"
+        android:layout_below="@+id/edit_cadastro_nome"
+        android:ems="10"
+        android:hint="Digite seu e-mail:"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edit_cadastro_senha"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_cadastro_nome"
+        android:layout_below="@+id/edit_cadastro_email"
+        android:ems="10"
+        android:hint="Digite sua senha:"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/bt_cadastrar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_cadastro_nome"
+        android:layout_below="@+id/edit_cadastro_senha"
+        android:text="@string/botao_cadastrar" />
+
+</RelativeLayout>

@@ -3,16 +3,16 @@
     package="br.com.gamadeveloper.whatssapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,12 +21,8 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name=".activity.ValidadorActivity"
-            android:label="@string/title_activity_validador" >
-        </activity>
+            android:label="@string/title_activity_login"></activity>
+        <activity android:name=".CadastroUsuarioActivity"></activity>
     </application>
 
 </manifest>
