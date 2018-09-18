@@ -17,22 +17,29 @@ import android.widget.Toast;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.github.rtoshiro.util.format.text.SimpleMaskTextWatcher;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.HashMap;
 import java.util.Random;
 
 import br.com.gamadeveloper.whatssapp.CadastroUsuarioActivity;
+import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
 import br.com.gamadeveloper.whatssapp.R;
 import br.com.gamadeveloper.whatssapp.helper.Permissao;
 import br.com.gamadeveloper.whatssapp.helper.Preferencias;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private DatabaseReference referenciaFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        referenciaFirebase = ConfiguracaoFirebase.getFirebase();
+        //Testando FireBase
+        referenciaFirebase.child("pontos").setValue("800");
 
 
     }
