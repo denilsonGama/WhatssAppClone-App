@@ -39,7 +39,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/edit_cadastro_senha"
+        android:id="@+id/edit_login_senha"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/edit_cadastro_nome"
@@ -53,7 +53,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/edit_cadastro_nome"
-        android:layout_below="@+id/edit_cadastro_senha"
+        android:layout_below="@+id/edit_login_senha"
         android:text="@string/botao_cadastrar" />
 
 </RelativeLayout>

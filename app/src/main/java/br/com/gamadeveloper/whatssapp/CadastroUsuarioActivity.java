@@ -37,7 +37,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         nome  = (EditText) findViewById(R.id.edit_cadastro_nome);
         email = (EditText) findViewById(R.id.edit_cadastro_email);
-        senha = (EditText) findViewById(R.id.edit_cadastro_senha);
+        senha = (EditText) findViewById(R.id.edit_login_senha);
         botaoCadastrar = (Button) findViewById(R.id.bt_cadastrar);
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {

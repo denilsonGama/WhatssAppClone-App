@@ -7,9 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/bt_sair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Sair" />
 </RelativeLayout>
