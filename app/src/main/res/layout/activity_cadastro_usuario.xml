@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:gravity="center_vertical|center_horizontal"
-    tools:context=".CadastroUsuarioActivity">
+    tools:context=".activity.CadastroUsuarioActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -49,11 +49,14 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/bt_cadastrar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/edit_cadastro_nome"
+        android:text="@string/botao_cadastrar"
+        android:id="@+id/bt_cadastrar"
         android:layout_below="@+id/edit_login_senha"
-        android:text="@string/botao_cadastrar" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:theme="@style/botaoPadrao"/>
 
 </RelativeLayout>

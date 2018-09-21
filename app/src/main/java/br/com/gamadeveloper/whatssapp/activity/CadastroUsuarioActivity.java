@@ -1,4 +1,4 @@
-package br.com.gamadeveloper.whatssapp;
+package br.com.gamadeveloper.whatssapp.activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
 import br.com.gamadeveloper.whatssapp.Model.Usuario;
+import br.com.gamadeveloper.whatssapp.R;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
 

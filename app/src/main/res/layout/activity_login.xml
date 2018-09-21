@@ -54,11 +54,14 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/bt_logar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/edit_login_email"
+        android:text="@string/botao_logar"
+        android:id="@+id/bt_logar"
         android:layout_below="@+id/edit_login_senha"
-        android:text="@string/botao_logar" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="24dp"
+        android:theme="@style/botaoPadrao"/>
 
 </RelativeLayout>
