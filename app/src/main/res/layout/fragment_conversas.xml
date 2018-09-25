@@ -12,6 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Conversas"
         android:id="@+id/textView2"
+        android:textColor="@color/textColorTextViewGeneral"
         android:layout_gravity="center" />
 
 </FrameLayout>

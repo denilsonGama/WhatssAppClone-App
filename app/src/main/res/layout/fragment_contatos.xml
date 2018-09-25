@@ -11,6 +11,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Contatos"
         android:id="@+id/textView3"
+        android:textColor="@color/textColorTextViewGeneral"
         android:layout_gravity="center" />
 
 
