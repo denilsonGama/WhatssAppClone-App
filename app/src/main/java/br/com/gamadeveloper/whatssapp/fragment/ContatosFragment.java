@@ -28,10 +28,25 @@ public class ContatosFragment extends Fragment {
     private ArrayAdapter adapter;
     private ArrayList<String> contatos;
     private DatabaseReference firebase;
+    private ValueEventListener valueEventListenerContatos;
 
 
     public ContatosFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //Verificar a atualização apenas quando o fragmento for incializado, e não no OnCreate
+        firebase.addValueEventListener( valueEventListenerContatos);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //Removendo o eventListner para que não fique esperando por atualizações do Firebase
+        firebase.removeEventListener( valueEventListenerContatos);
     }
 
 
@@ -60,7 +75,7 @@ public class ContatosFragment extends Fragment {
                      .child(identificadorUsuarioLogado);
 
         //Notificar alterações na estrutura
-        firebase.addValueEventListener(new ValueEventListener() {
+        valueEventListenerContatos = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -79,10 +94,8 @@ public class ContatosFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        };
 
         return view;
-
     }
-
 }
