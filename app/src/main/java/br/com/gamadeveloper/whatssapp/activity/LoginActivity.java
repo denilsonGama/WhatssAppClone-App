@@ -19,6 +19,8 @@
     import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
     import br.com.gamadeveloper.whatssapp.Model.Usuario;
     import br.com.gamadeveloper.whatssapp.R;
+    import br.com.gamadeveloper.whatssapp.helper.Base64Custom;
+    import br.com.gamadeveloper.whatssapp.helper.Preferencias;
 
     public class LoginActivity extends AppCompatActivity {
 
@@ -77,11 +79,18 @@
             ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    //Retorna o objeto task, que foi levado para autenticar
+                    //Retorna o objeto task, que foi levado para autenticar e Verifica se o obejeto foi autenticado com sucesso
 
-                    if (task.isSuccessful()) { //Verifica se o obejeto foi autenticado com sucesso
+                    if (task.isSuccessful()) {
+
+                        //Salvar preferencias:
+                        Preferencias preferencias = new Preferencias(LoginActivity.this);
+                        String identificadorUsuarioLogado = Base64Custom.codificarBase64(usuario.getEmail());
+                        preferencias.salvarDados( identificadorUsuarioLogado );
+
                         abrirTelaPrincipal();
                         Toast.makeText(LoginActivity.this, "Sucesso ao fazer login", Toast.LENGTH_LONG).show();
+
                     } else {
                         String erroExcecao = "";
                         try{

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "505244803715",
-    "firebase_url": "https://whatsapp-5549a.firebaseio.com",
-    "project_id": "whatsapp-5549a",
-    "storage_bucket": "whatsapp-5549a.appspot.com"
+    "project_number": "602490059992",
+    "firebase_url": "https://whatsapp-3ca4c.firebaseio.com",
+    "project_id": "whatsapp-3ca4c",
+    "storage_bucket": "whatsapp-3ca4c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:505244803715:android:ea5349894866e15d",
+        "mobilesdk_app_id": "1:602490059992:android:ea5349894866e15d",
         "android_client_info": {
           "package_name": "br.com.gamadeveloper.whatssapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "505244803715-0m2u5ltvleppnv3d1eq0eda9t5ip5q95.apps.googleusercontent.com",
+          "client_id": "602490059992-50n9lh67bfs0962da4sqanc8erdae83b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.gamadeveloper.whatssapp",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "505244803715-fb65rgckcm4f5a0vlqiq78polh9fo2rq.apps.googleusercontent.com",
+          "client_id": "602490059992-qte79goh3buu8safen2nd9muls82h52l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBUjCcy2InqX9HiGjsHfDg0-rpM3xDTgIE"
+          "current_key": "AIzaSyDR_joYGrfkKN-peAzLy-eP-1IL37RcGlI"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "505244803715-fb65rgckcm4f5a0vlqiq78polh9fo2rq.apps.googleusercontent.com",
+              "client_id": "602490059992-qte79goh3buu8safen2nd9muls82h52l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

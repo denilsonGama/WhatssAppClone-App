@@ -5,14 +5,21 @@
     tools:context="br.com.gamadeveloper.whatssapp.fragment.ContatosFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Contatos"
         android:id="@+id/textView3"
         android:textColor="@color/textColorTextViewGeneral"
-        android:layout_gravity="center" />
+        android:layout_gravity="center" /> -->
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_contatos"
+        android:divider="@color/colorLine"
+        android:dividerHeight="1dp"
+        android:layout_gravity="center_horizontal|top" />
 
 </FrameLayout>

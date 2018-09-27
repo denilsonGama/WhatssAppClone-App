@@ -6,6 +6,7 @@
     <color name="colorPrimary">#0b6156</color>
     <color name="textColorPrimary">#ffffff</color>
     <color name="colorAccente">#3d958a</color>
+    <color name="colorLine">#CCCCCC</color>
     <color name="textColorTextViewGeneral">#000000</color>
 
 
