@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import br.com.gamadeveloper.whatssapp.Adapter.ContatoAdapter;
 import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
 import br.com.gamadeveloper.whatssapp.Model.Contato;
 import br.com.gamadeveloper.whatssapp.R;
@@ -26,7 +27,7 @@ public class ContatosFragment extends Fragment {
 
     private ListView listView;
     private ArrayAdapter adapter;
-    private ArrayList<String> contatos;
+    private ArrayList<Contato> contatos;//ArrayList para um objeto Contato
     private DatabaseReference firebase;
     private ValueEventListener valueEventListenerContatos;
 
@@ -60,11 +61,22 @@ public class ContatosFragment extends Fragment {
         View view  = inflater.inflate(R.layout.fragment_contatos, container, false);
         //Monta o listView e o adapter
         listView = (ListView) view.findViewById(R.id.lv_contatos);
-        adapter = new ArrayAdapter(
-                getActivity(),
-                R.layout.lista_contatos,
-                contatos
-        );
+
+        /*comentado para criação do adapter customizado
+                adapter = new ArrayAdapter(
+                          getActivity(),
+                          R.layout.lista_contatos,
+                          contatos
+         //Este adapter traz um Array de Strings e retorna apenas 1 item
+
+        );*/
+
+        //adapter customizado:
+
+
+
+
+        adapter = new ContatoAdapter(getActivity(), contatos);
         listView.setAdapter( adapter);
         //Recuperando os contatos no firebase
         Preferencias preferencias = new Preferencias(getActivity());
@@ -85,7 +97,7 @@ public class ContatosFragment extends Fragment {
                 //listando os contatos
                 for(DataSnapshot dados: dataSnapshot.getChildren()){
                     Contato contato = dados.getValue(Contato.class);
-                    contatos.add(contato.getNome());
+                    contatos.add(contato);//Armazenando um objeto no array Contato
                 }
                 adapter.notifyDataSetChanged();
             }
