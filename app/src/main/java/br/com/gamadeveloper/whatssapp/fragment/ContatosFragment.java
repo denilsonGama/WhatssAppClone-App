@@ -55,7 +55,7 @@ public class ContatosFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Inicia o ArrayList
         contatos = new ArrayList<>();
@@ -115,6 +115,13 @@ public class ContatosFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ConversaActivity.class);
+
+                //Recuperar dados a serem passados para a fragment conversas
+                Contato contato = contatos.get(position);
+
+                //Enviando dados para a conversa
+                intent.putExtra("nome",contato.getNome());
+                intent.putExtra("email", contato.getEmail());
 
                 startActivity(intent);
             }
