@@ -1,14 +1,22 @@
 package br.com.gamadeveloper.whatssapp.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
 import br.com.gamadeveloper.whatssapp.Model.Mensagem;
@@ -22,6 +30,11 @@ public class ConversaActivity extends AppCompatActivity {
     private EditText editMensagem;
     private ImageButton btEnviar;
     private DatabaseReference firebase;
+    private ListView listView;
+    private ArrayList<String> mensagens;
+    private ArrayAdapter adapter;
+    private ValueEventListener valueEventListenerMensagem;
+
 
     //dados do destinatario da conversa
     private String idUsuarioDestinatario;
@@ -38,6 +51,7 @@ public class ConversaActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tb_conversa);
         editMensagem = (EditText) findViewById(R.id.edit_mensagem);
         btEnviar = (ImageButton) findViewById(R.id.bt_enviar);
+        listView = (ListView) findViewById(R.id.lv_conversas);
 
         //dados do usuario logado
         Preferencias preferencias = new Preferencias(ConversaActivity.this);
@@ -57,6 +71,49 @@ public class ConversaActivity extends AppCompatActivity {
         toolbar.setTitle(nomeUsuarioDestinatario);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
+
+        //Monta o ListView de mensagens
+        mensagens = new ArrayList<>();
+        adapter = new ArrayAdapter(
+                ConversaActivity.this,
+                android.R.layout.simple_list_item_1,
+                mensagens
+        );
+        listView.setAdapter(adapter);
+
+        //Recuperar as mensagens do Firebase
+        firebase = ConfiguracaoFirebase.getFirebase()
+                    .child("mensagens")
+                    .child(idUsuarioRemetente)
+                    .child(idUsuarioDestinatario);
+        //Criar a listner para mensagem (objeto ValueEventListner)
+        valueEventListenerMensagem = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                //limpar mensagens
+                mensagens.clear();
+
+                //Recupera as mensagens
+                for(DataSnapshot dados: dataSnapshot.getChildren()){ //Percorre a estrutura mensagens no fireBase
+                    Mensagem mensagem = dados.getValue( Mensagem.class);
+                    mensagens.add( mensagem.getMensagem());
+
+                }
+
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        firebase.addValueEventListener( valueEventListenerMensagem);
+
+
 
         //Enviar Mensagem
         btEnviar.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +140,7 @@ public class ConversaActivity extends AppCompatActivity {
 
     }
 
+
     private boolean salvarMensagem(String idRemetente, String idDestinatario, Mensagem mensagem){
         try {
 
@@ -98,5 +156,12 @@ public class ConversaActivity extends AppCompatActivity {
             e.printStackTrace();
             return false;
         }
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        firebase.removeEventListener(valueEventListenerMensagem);
     }
 }
