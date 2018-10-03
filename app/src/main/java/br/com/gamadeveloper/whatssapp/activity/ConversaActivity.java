@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import br.com.gamadeveloper.whatssapp.Adapter.MensagemAdapter;
 import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
 import br.com.gamadeveloper.whatssapp.Model.Mensagem;
 import br.com.gamadeveloper.whatssapp.R;
@@ -31,8 +32,8 @@ public class ConversaActivity extends AppCompatActivity {
     private ImageButton btEnviar;
     private DatabaseReference firebase;
     private ListView listView;
-    private ArrayList<String> mensagens;
-    private ArrayAdapter adapter;
+    private ArrayList<Mensagem> mensagens;//Array de objetos Mensagem
+    private ArrayAdapter<Mensagem> adapter;//Adapter de objetos Mensagem
     private ValueEventListener valueEventListenerMensagem;
 
 
@@ -74,11 +75,13 @@ public class ConversaActivity extends AppCompatActivity {
 
         //Monta o ListView de mensagens
         mensagens = new ArrayList<>();
-        adapter = new ArrayAdapter(
+        /*adapter = new ArrayAdapter(
                 ConversaActivity.this,
                 android.R.layout.simple_list_item_1,
                 mensagens
-        );
+        );*/
+        mensagens = new ArrayList<>();
+        adapter = new MensagemAdapter(ConversaActivity.this, mensagens);
         listView.setAdapter(adapter);
 
         //Recuperar as mensagens do Firebase
@@ -97,7 +100,7 @@ public class ConversaActivity extends AppCompatActivity {
                 //Recupera as mensagens
                 for(DataSnapshot dados: dataSnapshot.getChildren()){ //Percorre a estrutura mensagens no fireBase
                     Mensagem mensagem = dados.getValue( Mensagem.class);
-                    mensagens.add( mensagem.getMensagem());
+                    mensagens.add( mensagem);
 
                 }
 
@@ -131,7 +134,11 @@ public class ConversaActivity extends AppCompatActivity {
                     mensagem.setIdUsuario(idUsuarioRemetente);
                     mensagem.setMensagem(textoMensagem);
 
+                    //Slava mensagem Remetente
                     salvarMensagem(idUsuarioRemetente,idUsuarioDestinatario, mensagem);
+
+                    //Slava mensagem Destinatario
+                    salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
                     editMensagem.setText("");//Limpar a caixa de texto apos enviar
                 }
 
