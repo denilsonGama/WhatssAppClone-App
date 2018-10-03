@@ -33,6 +33,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private FirebaseAuth autenticacao;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
                     //Salvar preferencias:
                     Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
-                    preferencias.salvarDados( identificadorUsuario );
+                    preferencias.salvarDados( identificadorUsuario, usuario.getNome() );
 
                     abrirLoginUsuario();
 
