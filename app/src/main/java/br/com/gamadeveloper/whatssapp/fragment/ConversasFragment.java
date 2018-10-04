@@ -1,11 +1,13 @@
 package br.com.gamadeveloper.whatssapp.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,6 +22,8 @@ import br.com.gamadeveloper.whatssapp.Adapter.ConversaAdapter;
 import br.com.gamadeveloper.whatssapp.Config.ConfiguracaoFirebase;
 import br.com.gamadeveloper.whatssapp.Model.Conversa;
 import br.com.gamadeveloper.whatssapp.R;
+import br.com.gamadeveloper.whatssapp.activity.ConversaActivity;
+import br.com.gamadeveloper.whatssapp.helper.Base64Custom;
 import br.com.gamadeveloper.whatssapp.helper.Preferencias;
 
 
@@ -38,7 +42,7 @@ public class ConversasFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_conversas, container, false);
@@ -76,6 +80,24 @@ public class ConversasFragment extends Fragment {
 
             }
         };
+
+        //Adicionar evento onclique na lista
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Conversa conversa = conversas.get(position);
+                Intent intent  = new Intent(getActivity(), ConversaActivity.class);
+
+                intent.putExtra("nome", conversa.getNome());
+                String email = Base64Custom.decodificarBase64(conversa.getIdUsuario());
+                intent.putExtra("email",email);
+
+                startActivity(intent);
+
+
+            }
+        });
 
         return view;
 
